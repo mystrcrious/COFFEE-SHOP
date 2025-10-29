@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomodachi Coffe</title>
+    <link rel="stylesheet" href="sabiatyle.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Barricieto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">TOMO<span>DACHI</span></div>
+        </div>
+    </header>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>tomodachibestie@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+62 121-1028-2025</p>
+                            </div>
+                        </div>
+                        
+                           
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div>
+                                <h4>Instagram</h4>
+                                <p>TomodachiCoffe</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>03 President Street, Jababeka City</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Contact Us</h3>
+                    <form id="contactform">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder=" ">
+                            <label for="name">Your Name</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <label for="email">Your Email *</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" id="phonenumber" name="phonenumber" required placeholder=" ">
+                            <label for="phonenumber">Phone Number *</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="comment" name="comment" rows="5" required placeholder=" "></textarea>
+                            <label for="comment">Your Message</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="newsletter">
+                <h3>Sign up to Tomodachi mail</h3>
+                <p>Stay updated with our latest news and offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Follow us</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">Refund policy</a>
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms of service</a>
+                    <a href="#">Contact information</a>
+                </div>
+                <div class="copyright">
+                    © 2025, Tomodachi · All rights reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+    document.getElementById('contactform').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phonenumber').value;
+    const comment = document.getElementById('comment').value;
+
+    // Simple validation
+    if (name && email && phone && comment) {
+        alert(`Thank you, ${name}! Your message has been sent. We'll get back to you soon.`);
+        document.getElementById('contactform').reset();
+    } else {
+        alert('Please fill in all required fields.');
+    }
+});
+    </script>
+</body>
+</html>

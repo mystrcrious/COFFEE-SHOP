@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOMODACHI Coffee Menu</title>
+  <link rel="stylesheet" href="menu.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">T O M O D A C H I</div>
+    <nav>
+      <a href="index.html">Back To The Website</a>
+      <a href="#menu">Menu Coffee</a>
+      <a href="about - Copy.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1 class="fade-in">友   達</h1>
+      <p class="fade-in delay">Friendship Begins With Every Cup</p>
+      <div class="scroll-down">
+        <img src="img/minibean.png" alt="minibean">
+      </div>
+    </div>
+  </section>
+ 
+  <section class="coffee-table-section">
+    <h1>Coffee Bean Comparison</h1>
+    <p class="intro">
+      <b>Arabica</b>, <b>Robusta</b>, and <b>Liberica</b>.
+    </p>
+
+    <table class="coffee-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Caffeine (%)</th>
+          <th>Acidity</th>
+          <th>Flavor</th>
+          <th>Main Regions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Arabica</b></td>
+          <td>1.2</td>
+          <td>High</td>
+          <td>Sweet, fruity</td>
+          <td>South America, Indonesia</td>
+        </tr>
+        <tr>
+          <td><b>Robusta</b></td>
+          <td>2.3</td>
+          <td>Low</td>
+          <td>Strong, bitter</td>
+          <td>Africa, Southeast Asia</td>
+        </tr>
+        <tr>
+          <td><b>Liberica</b></td>
+          <td>1.6</td>
+          <td>Medium</td>
+          <td>Woody, floral</td>
+          <td>Philippines, Malaysia</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <main id="menu" class="menu">
+    <div class="card">
+      <img src="img/AMERICANO.png" alt="Americano">
+      <h2 class="vertical-text">AMERICANO</h2>
+      <p>Light espresso<br>with water.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/CAPPUCINO.png" alt="Cappuccino">
+      <h2 class="vertical-text">CAPPUCCINO</h2>
+      <p>Espresso with milk<br>foam on top.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/AFFOGATO.png" alt="Affogato">
+      <h2 class="vertical-text">AFFOGATO</h2>
+      <p>Coffee with<br>ice cream.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/MATCHA.png" alt="Matcha Espresso">
+      <h2 class="vertical-text">MATCHA<br>ESPRESSO</h2>
+      <p>Soft matcha with<br>espresso.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/MOCHA.png" alt="Mocha">
+      <h2 class="vertical-text">MOCHA</h2>
+      <p>Espresso with<br>chocolate and milk.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/LATTE.png" alt="Latte">
+      <h2 class="vertical-text">LATTE</h2>
+      <p>Smooth espresso<br>with more milk.</p>
+    </div>
+
+     <div class="card">
+      <img src="img/CARMEL.png" alt="Caramel Macchiato">
+      <h2 class="vertical-text">CARAMEL MACCHIATO</h2>
+      <p>Espresso with caramel<br>and milk.</p>
+    </div>
+    <div class="card">
+      <img src="img/HAZELNUT.png" alt="Latte">
+      <h2 class="vertical-text">HAZELNUT LATTE</h2>
+      <p>Espresso with milk<br>and a nutty hazelnut.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 TOMODACHI</p>
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    window.addEventListener('scroll', () => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

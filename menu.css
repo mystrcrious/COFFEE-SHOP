@@ -1,0 +1,261 @@
+/* ====== BASIC ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #8b5a2b, #5a3921);
+  font-family: 'Josefin Sans', sans-serif;
+  color: #3a1f00;
+  overflow-x: hidden;
+}
+
+/* ====== HEADER ====== */
+.navbar {
+  background: rgba(243, 237, 231, 0.95);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.logo {
+  font-family: "Barriecito", system-ui;
+  letter-spacing: 8px;
+  color: #4b2b10;
+  font-size: 26px;
+  margin: 15px 0 5px 0;
+}
+
+nav {
+  padding-bottom: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #3a1f00;
+  margin: 0 20px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+  color: #b27435;
+  transform: scale(1.1);
+}
+
+/* ====== HERO ====== */
+.hero {
+  background: url('img/Walpaper.jpg') center/cover no-repeat;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-text {
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.5s ease;
+}
+
+.hero-text h1 {
+  font-family: "Barriecito", system-ui;
+  font-size: 90px;
+  letter-spacing: 20px;
+}
+
+.hero-text p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 22px;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+.scroll-down {
+  margin-top: 50px;
+  font-size: 26px;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+/* Fade animations */
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes bounce {
+  0%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
+
+/* ====== MENU ====== */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 35px;
+  justify-items: center;
+  padding: 80px 80px;
+}
+
+/* ====== CARD ====== */
+.card {
+  background: rgba(243, 237, 231, 0.95);
+  border-radius: 25px;
+  width: 260px;
+  height: 360px; /* tinggi tetap agar rapi */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+  padding: 25px 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease, box-shadow 0.4s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.card img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  margin-top: 50px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: translateY(-50%) rotate(180deg);
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  font-family: "Barriecito", system-ui;
+  font-size: 15px;
+  color: #4b2b10;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #3a1f00;
+  margin-bottom: 15px;
+}
+
+
+/* ====== FOOTER ====== */
+footer {
+  background: rgba(243, 237, 231, 0.95);
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #4b2b10;
+  letter-spacing: 1px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 60px;
+    letter-spacing: 10px;
+  }
+  .hero-text p {
+    font-size: 18px;
+  }
+  .menu {
+    padding: 40px 20px;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #8b5a2b; /* warna coklat kopi rata */
+  color: #fff8e7;
+  margin: 0;
+  padding: 0;
+}
+
+.coffee-table-section {
+  max-width: 800px;
+  margin: 60px auto;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+}
+
+h1 {
+  text-align: center;
+  color: #f7cfa3;
+  margin-bottom: 10px;
+}
+
+.intro {
+  text-align: center;
+  color: #fff2d6;
+  margin-bottom: 25px;
+}
+
+.coffee-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1em;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.coffee-table th {
+  background-color: #5a3921;
+  color: #f3d4b6;
+  text-transform: uppercase;
+  padding: 12px;
+}
+
+.coffee-table td {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  text-align: center;
+}
+
+.coffee-table tr:nth-child(even) td {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.coffee-table tr:hover td {
+  background-color: rgba(243, 200, 150, 0.2);
+  transition: 0.3s ease;
+}
+
+.coffee-table td b {
+  color: #f7cfa3;
+}

@@ -1,0 +1,164 @@
+:root {
+            /* Revised Palette: Mocha, Hangat, dan Mewah */
+            --color-primary: #3b1b02; /* Cokelat Espresso Gelap (Untuk Teks & Heading) */
+            --color-secondary: #c28b55; /* Karamel Hangat (Untuk Aksen) */
+            --color-body-bg: #80604b; /* Cokelat Mocha Sedang (BACKGROUND UTAMA) */
+            --color-container-bg: #5c3e2e; /* Cokelat Kayu (BACKGROUND KONTEN) */
+            --color-text: #f5f0e6; /* Putih Gading (Teks) */
+            --color-accent: #b86d4a; /* Cokelat Siena */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.8;
+            background-color: var(--color-body-bg); /* Cokelat Mocha Medium */
+            /* Latar belakang biji kopi dengan opacity rendah untuk kesan mewah */
+            background-image: url('https://www.transparenttextures.com/patterns/coffee-beans.png');
+            background-attachment: fixed;
+            color: var(--color-text); /* Teks diubah ke Putih Gading agar kontras */
+            overflow-x: hidden;
+        }
+
+        /* Keyframe untuk animasi Fade-in saat elemen dimuat */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Keyframe untuk animasi judul (Scale Up) */
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==================================== */
+        /* 2. CONTAINER & HEADER - REVISED */
+        /* ==================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 30px;
+            /* Latar belakang Cokelat Kayu, sedikit lebih gelap dari body BG */
+            background-color: var(--color-container-bg); 
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.4); 
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            text-align: center;
+            font-size: 4em;
+            margin-bottom: 60px;
+            color: var(--color-secondary); /* Aksen Karamel */
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            /* Animasi judul saat pemuatan */
+            animation: scaleUp 1.5s ease-out forwards;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: var(--color-secondary);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ==================================== */
+        /* 3. SECTION STYLES & ANIMATION - REVISED */
+        /* ==================================== */
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 100px;
+            align-items: center;
+            /* Latar belakang bagian yang sangat halus */
+            background-color: rgba(255, 255, 255, 0.05); 
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease, background-color 0.4s ease;
+            /* Animasi untuk setiap bagian */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px); /* Efek mengangkat saat di-hover */
+            /* Warna hover yang sedikit lebih terang agar menonjol */
+            background-color: rgba(255, 255, 255, 0.08); 
+        }
+
+        /* Memberikan delay animasi untuk efek staggered */
+        .section:nth-child(2) { animation-delay: 0.3s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.9s; }
+        .section:nth-child(5) { animation-delay: 1.2s; }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .text {
+            flex: 1;
+            padding: 40px;
+            min-width: 350px;
+        }
+
+        .text p {
+            font-size: 1.15em;
+            color: var(--color-text); /* Teks Putih Gading */
+            text-align: justify;
+        }
+        
+        strong {
+            color: var(--color-secondary);
+            font-weight: 700;
+        }
+
+        .image {
+            flex: 1;
+            padding: 0;
+            min-width: 350px;
+            overflow: hidden;
+            background-color: var(--color-accent);
+        }
+        
+        .image img {
+            width: 100%;
+            height: 400px; /* Tinggi gambar yang konsisten */
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+            box-shadow: none;
+            /* Efek zoom halus saat di-hover */
+            transition: transform 0.6s ease-out;
+        }
+        
+        .image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ==================================== */
+        /* 4. MEDIA QUERIES (RESPONSIVE) */
+        /* ==================================== */
+        @media (max-width: 900px) {
+            .section {
+                flex-direction: column !important;
+                margin-bottom: 50px;
+            }
+            .text {
+                padding: 30px;
+            }
+            .image img {
+                height: 300px;
+            }
+            h1 {
+                font-size: 2.5em;
+                letter-spacing: 3px;
+            }
+        }
