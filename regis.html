@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Registration</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #6f4e37, #3e2723);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .container {
+        width: 420px;
+        background: #f5ebe0;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      h2 {
+        text-align: center;
+        color: #4e342e;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-top: 12px;
+        font-weight: bold;
+        color: #5d4037;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #bcaaa4;
+        margin-top: 5px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #8d6e63;
+        background-color: #efebe9;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 12px;
+        background: #6d4c41;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #4e342e;
+      }
+
+      .error {
+        color: #bf360c;
+        font-size: 13px;
+      }
+
+      .success {
+        margin-top: 15px;
+        text-align: center;
+        color: #2e7d32;
+        font-weight: bold;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+      }
+
+      .container {
+        width: 400px;
+        margin: 40px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      input,
+      select,
+      button {
+        width: 100%;
+        padding: 8px;
+        margin-top: 8px;
+      }
+
+      .error {
+        color: red;
+        font-size: 13px;
+      }
+
+      .success {
+        color: green;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>User Registration</h2>
+
+      <form id="registerForm">
+        <label>Username</label>
+        <input type="text" id="username" />
+        <span class="error" id="userError"></span>
+
+        <label>Email</label>
+        <input type="email" id="email" />
+        <span class="error" id="emailError"></span>
+
+        <label>Password</label>
+        <input type="password" id="password" />
+        <span class="error" id="passError"></span>
+
+        <label>Gender</label>
+        <select id="gender">
+          <option value="">-- Select Gender --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <span class="error" id="genderError"></span>
+
+        <button type="submit" id="registerBtn">Register</button>
+      </form>
+
+      <p class="success" id="successMsg"></p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        /* Focus Event */
+        $("input, select").focus(function () {
+          $(this).css("background-color", "#e8f0fe");
+        });
+
+        /* Keypress Event (Username validation) */
+        $("#username").keypress(function () {
+          $("#userError").text("");
+        });
+
+        /* Change Event (Gender selection) */
+        $("#gender").change(function () {
+          if ($(this).val() !== "") {
+            $("#genderError").text("");
+          }
+        });
+
+        /* Mouse Move Event (simple interaction) */
+        $(".container").mousemove(function () {
+          console.log("Mouse moving inside form");
+        });
+
+        /* Click Event + Form Validation */
+        $("#registerForm").submit(function (e) {
+          e.preventDefault();
+
+          let valid = true;
+
+          let username = $("#username").val();
+          let email = $("#email").val();
+          let password = $("#password").val();
+          let gender = $("#gender").val();
+
+          if (username.length < 5) {
+            $("#userError").text("Username must be at least 5 characters");
+            valid = false;
+          }
+
+          if (!email.includes("@")) {
+            $("#emailError").text("Invalid email address");
+            valid = false;
+          } else {
+            $("#emailError").text("");
+          }
+
+          if (password.length < 6) {
+            $("#passError").text("Password must be at least 6 characters");
+            valid = false;
+          } else {
+            $("#passError").text("");
+          }
+
+          if (gender === "") {
+            $("#genderError").text("Please select gender");
+            valid = false;
+          }
+
+          if (valid) {
+            $("#successMsg").text("Registration Successful!");
+            $("#registerForm")[0].reset();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

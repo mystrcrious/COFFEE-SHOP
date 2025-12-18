@@ -1,107 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chocolate Login Form</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      body {
-        background-image: url("img/kopibackround.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chocolate Login Form</title>
 
-      .login-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-      .login-form {
-        background-color: rgba(244, 238, 234, 0.4); /* transparent chocolate tone */
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        color: #fff;
-        width: 300px;
-      }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: url("img/kopibackround.jpg") center / cover no-repeat;
+      font-family: "Segoe UI", Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-      .login-form h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: white;
-      }
+    .login-form {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(244, 238, 234, 0.45);
+      backdrop-filter: blur(6px);
+      padding: 36px 44px;
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      color: #fff;
+      animation: slideUp 0.6s ease;
+    }
 
-      .login-form label {
-        display: block;
-        margin-top: 10px;
-        font-weight: bold;
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
       }
-
-      .login-form input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: none;
-        border-radius: 6px;
-        background-color: #f8f4f0;
-        color: #333;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      .login-form button {
-        display: block;
-        margin: 20px auto 0;
-        padding: 10px 20px;
-        background-color: #8b5a2b; /* saddle brown */
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
+    h2 {
+      text-align: center;
+      margin-bottom: 26px;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 6px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+      outline: none;
+      background-color: #f8f4f0;
+      transition: all 0.25s ease;
+    }
+
+    input:focus {
+      background-color: #eee2d1;
+      box-shadow: 0 0 0 2px rgba(139, 90, 43, 0.5);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 26px;
+      padding: 14px;
+      background-color: #8b5a2b;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    button:hover {
+      background-color: #5c3317;
+      transform: translateY(-2px);
+    }
+
+    .forgot {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    .forgot a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Alert */
+    .alert {
+      display: none;
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      animation: fadeSlide 0.3s ease;
+    }
+
+    .alert.error {
+      background-color: #e25555;
+    }
+
+    .alert.success {
+      background-color: #62b85c;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
       }
-
-      .login-form button:hover {
-        background-color: #5c3317;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
+  </style>
+</head>
 
-    </style>
-  </head>
-  <body>
-    <div class="login-container">
-      <form class="login-form" action="" method="get">
-        <h2>Welcome 友 達 customer!</h2>
-        <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required
-        />
-        <br />
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        />
-        <br />
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-        />
-        <br />
-        <button type="submit">Login</button>
-      </form>
+<body>
+  <form class="login-form" id="loginForm" novalidate>
+    <h2>Welcome 友 達 Customer ☕</h2>
+
+    <label>Name</label>
+    <input type="text" id="name" placeholder="Enter your name" required />
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="example@email.com" required />
+
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter your password" required />
+
+    <button type="submit" id="loginBtn">Login</button>
+
+    <p class="forgot">
+      <a href="forgotpw.html">Forgot Password?</a>
+    </p>
+
+    <div class="alert error" id="errorAlert">
+      ⚠️ Email must be valid and include @
     </div>
-  </body>
+
+    <div class="alert success" id="successAlert">
+      ✅ Login successful! Redirecting...
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const email = document.getElementById("email");
+    const nameInput = document.getElementById("name");
+    const password = document.getElementById("password");
+    const loginBtn = document.getElementById("loginBtn");
+    const errorAlert = document.getElementById("errorAlert");
+    const successAlert = document.getElementById("successAlert");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function hideAlerts() {
+      errorAlert.style.display = "none";
+      successAlert.style.display = "none";
+    }
+
+    function show(el) {
+      el.style.display = "block";
+    }
+
+    /* ========= 5 EVENT LISTENERS ========= */
+
+    // 1. Click Event
+    loginBtn.addEventListener("click", () => {
+      console.log("Login button clicked");
+    });
+
+    // 2. Change Event
+    email.addEventListener("change", () => {
+      console.log("Email changed:", email.value);
+    });
+
+    // 3. Mouse Move Event
+    form.addEventListener("mousemove", () => {
+      console.log("Mouse moving inside form");
+    });
+
+    // 4. Keypress Event
+    password.addEventListener("keypress", (e) => {
+      console.log("Key pressed in password:", e.key);
+    });
+
+    // 5. Focus Event
+    nameInput.addEventListener("focus", () => {
+      console.log("Name field focused");
+    });
+
+    /* ========= SUBMIT LOGIC ========= */
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      hideAlerts();
+
+      if (!emailRegex.test(email.value.trim())) {
+        show(errorAlert);
+        return;
+      }
+
+      show(successAlert);
+
+      // ⏳ delay sebentar → pindah halaman
+      setTimeout(() => {
+        window.location.href = "menu.html";
+      }, 1200);
+    });
+
+    // Real-time validation
+    email.addEventListener("input", function () {
+      if (emailRegex.test(this.value.trim())) {
+        errorAlert.style.display = "none";
+      }
+    });
+  </script>
+</body>
 </html>

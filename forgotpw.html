@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomodachi Coffee Shop – Reset Password</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 460px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+        }
+
+        .coffee-icon {
+            text-align: center;
+            font-size: 3.8em;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-size: 2.7em;
+            color: #6F4E37;
+        }
+
+        .logo p {
+            color: #9C6B4A;
+            font-style: italic;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #5D4037;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 2px solid #D7CCC8;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #8D6E63;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 14px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            color: #fff;
+            background: #6F4E37;
+        }
+
+        .message {
+            display: none;
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .error {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .success {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .back-login {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .back-login a {
+            color: #8D6E63;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container" id="container">
+    <div class="coffee-icon">☕</div>
+
+    <div class="logo">
+        <h1>Tomodachi</h1>
+        <p>Coffee Shop & Lounge</p>
+    </div>
+
+    <div class="title">
+        <h2>Reset Password</h2>
+        <p>Secure your account with a new password</p>
+    </div>
+
+    <div id="errorMsg" class="message error"></div>
+    <div id="successMsg" class="message success"></div>
+
+    <form id="resetForm">
+        <div class="form-group">
+            <label>Username / Email</label>
+            <input type="text" id="username" placeholder="Enter username or email">
+        </div>
+
+        <div class="form-group">
+            <label>New Password</label>
+            <input type="password" id="newPassword" placeholder="Minimum 8 characters">
+        </div>
+
+        <div class="form-group">
+            <label>Confirm New Password</label>
+            <input type="password" id="confirmPassword" placeholder="Re-enter new password">
+        </div>
+
+        <button class="btn" id="resetBtn">Reset Password</button>
+
+        <div class="back-login">
+            <a href="login.html">← Back to Login</a>
+        </div>
+    </form>
+</div>
+
+<script>
+/* ELEMENT */
+const form = document.getElementById("resetForm");
+const username = document.getElementById("username");
+const newPassword = document.getElementById("newPassword");
+const confirmPassword = document.getElementById("confirmPassword");
+const resetBtn = document.getElementById("resetBtn");
+const container = document.getElementById("container");
+const errorMsg = document.getElementById("errorMsg");
+const successMsg = document.getElementById("successMsg");
+
+/* ===============================
+   1️⃣ CLICK EVENT
+================================ */
+resetBtn.addEventListener("click", function () {
+    console.log("Reset button clicked");
+});
+
+/* ===============================
+   2️⃣ CHANGE EVENT
+================================ */
+username.addEventListener("change", function () {
+    console.log("Username changed:", this.value);
+});
+
+/* ===============================
+   3️⃣ MOUSE MOVE EVENT
+================================ */
+container.addEventListener("mousemove", function () {
+    console.log("Mouse moving inside reset password form");
+});
+
+/* ===============================
+   4️⃣ KEYPRESS EVENT
+================================ */
+newPassword.addEventListener("keypress", function (e) {
+    console.log("Key pressed in password field:", e.key);
+});
+
+/* ===============================
+   5️⃣ FOCUS EVENT
+================================ */
+confirmPassword.addEventListener("focus", function () {
+    console.log("Confirm password field focused");
+});
+
+/* ===============================
+   SUBMIT LOGIC
+================================ */
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    errorMsg.style.display = "none";
+    successMsg.style.display = "none";
+
+    if (username.value.trim() === "") {
+        return showError("Username or email is required");
+    }
+
+    if (newPassword.value.length < 8) {
+        return showError("Password must be at least 8 characters");
+    }
+
+    if (newPassword.value !== confirmPassword.value) {
+        return showError("Passwords do not match");
+    }
+
+    showSuccess("Password reset successful ☕ Redirecting...");
+
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 1500);
+});
+
+function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.style.display = "block";
+}
+
+function showSuccess(msg) {
+    successMsg.textContent = msg;
+    successMsg.style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOMODACHI Coffee Menu</title>
+  <link rel="stylesheet" href="menu.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="navbar">
+    <div class="logo">T O M O D A C H I</div>
+    <nav>
+      <a href="index.html">Back To The Website</a>
+      <a href="#menu">Menu Coffee</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1 class="fade-in">友   達</h1>
+      <p class="fade-in delay">Friendship Begins With Every Cup</p>
+      <div class="scroll-down"> <img src="img/minibean.png" alt="Scroll Down"></div>
+    </div>
+  </section>
+
+  <!-- FLOATING CART ICON -->
+  <div class="floating-cart" onclick="toggleCart()">
+    <span class="cart-icon-main">🛒</span>
+    <span class="cart-count" id="cartCount">0</span>
+  </div>
+
+  <!-- MENU SECTION -->
+  <section id="menu">
+  <main class="menu">
+    <div class="card" onclick="openNotesModal(0)">
+      <img src="img/AMERICANO.png" alt="Americano">
+      <h2 class="vertical-text">AMERICANO</h2>
+      <p>Light espresso<br>with water.</p>
+      <div class="card-price">Rp 35.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(0)">Add to Cart</button>
+    </div>
+
+    <div class="card" onclick="openNotesModal(1)">
+      <img src="img/CAPPUCCINO.png" alt="Cappuccino">
+      <h2 class="vertical-text">CAPPUCCINO</h2>
+      <p>Espresso with milk<br>foam on top.</p>
+      <div class="card-price">Rp 38.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(1)">Add to Cart</button>
+    </div>
+
+    <div class="card" onclick="openNotesModal(2)">
+      <img src="img/AFFOGATO.png" alt="Affogato">
+      <h2 class="vertical-text">AFFOGATO</h2>
+      <p>Coffee with<br>ice cream.</p>
+      <div class="card-price">Rp 40.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(2)">Add to Cart</button>
+    </div>
+
+    <div class="card" onclick="openNotesModal(3)">
+      <img src="img/MATCHA.png" alt="Matcha Espresso">
+      <h2 class="vertical-text">MATCHA<br>ESPRESSO</h2>
+      <p>Soft matcha with<br>espresso.</p>
+      <div class="card-price">Rp 36.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(3)">Add to Cart</button>
+    </div>
+
+    <div class="card" onclick="openNotesModal(4)">
+      <img src="img/MOCHA.png" alt="Mocha">
+      <h2 class="vertical-text">MOCHA</h2>
+      <p>Espresso with<br>chocolate and milk.</p>
+      <div class="card-price">Rp 39.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(4)">Add to Cart</button>
+    </div>
+
+    <div class="card" onclick="openNotesModal(5)">
+      <img src="img/LATTE.png" alt="Latte">
+      <h2 class="vertical-text">LATTE</h2>
+      <p>Smooth espresso<br>with more milk.</p>
+      <div class="card-price">Rp 38.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(5)">Add to Cart</button>
+    </div>
+
+    <div class="card" onclick="openNotesModal(6)">
+      <img src="img/CARAMEL.png" alt="Caramel Macchiato">
+      <h2 class="vertical-text">CARAMEL MACCHIATO</h2>
+      <p>Espresso with caramel<br>and milk.</p>
+      <div class="card-price">Rp 40.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(6)">Add to Cart</button>
+    </div>
+
+    <div class="card" onclick="openNotesModal(7)">
+      <img src="img/HAZELNUT.png" alt="Hazelnut Latte">
+      <h2 class="vertical-text">HAZELNUT LATTE</h2>
+      <p>Espresso with milk<br>and a nutty hazelnut.</p>
+      <div class="card-price">Rp 39.000</div>
+      <button class="card-button" onclick="event.stopPropagation(); openNotesModal(7)">Add to Cart</button>
+    </div>
+    </section>
+  </main>
+
+  <!-- MODAL NOTES -->
+  <div class="modal" id="notesModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeNotesModal()">&times;</span>
+      <div class="modal-body">
+        <div class="modal-product-info">
+          <img id="productImage" src="" alt="product" class="modal-product-image">
+          <div id="productName" class="modal-product-name"></div>
+          <div id="productPrice" class="modal-product-price"></div>
+        </div>
+        <form id="notesForm">
+          <div class="quantity-control">
+            <button type="button" onclick="decreaseQty()">−</button>
+            <input type="number" id="quantity" value="1" min="1" readonly>
+            <button type="button" onclick="increaseQty()">+</button>
+          </div>
+          <div class="form-group">
+            <label>Temperature (Required)</label>
+            <div class="temperature-control">
+              <button type="button" class="temp-btn" id="iceBtn" onclick="selectTemperature('ice')">🧊 Ice</button>
+              <button type="button" class="temp-btn" id="hotBtn" onclick="selectTemperature('hot')">☕ Hot</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Special Requests (Optional)</label>
+            <textarea id="notes" placeholder="e.g., Less sugar, Less ice, Use oat milk..."></textarea>
+          </div>
+          <div class="modal-buttons">
+            <button type="button" class="btn-confirm" onclick="addToCart()">Add to Cart</button>
+            <button type="button" class="btn-cancel" onclick="closeNotesModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT PAGE -->
+  <div class="checkout-container" id="checkoutPage">
+    <div class="checkout-content">
+      <div class="checkout-title">Order Summary</div>
+      
+      <div class="checkout-grid">
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <h3>Items</h3>
+          <div id="checkoutItems"></div>
+          <div class="order-total">
+            <div class="total-row">
+              <span>Subtotal:</span>
+              <span id="subtotal">Rp 0</span>
+            </div>
+            <div class="total-row grand">
+              <span>Total:</span>
+              <span id="grandTotal">Rp 0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="payment-section">
+          <h3>Payment Method</h3>
+          <div class="payment-method">
+            <input type="radio" id="transfer" name="payment" value="Bank Transfer" checked>
+            <label for="transfer">🏦 Bank Transfer</label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" id="ewallet" name="payment" value="E-Wallet ">
+            <label for="ewallet">📱 E-Wallet </label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" id="cash" name="payment" value="Cash on Pickup">
+            <label for="cash">💵 Cash on Pickup</label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" id="card" name="payment" value="Credit/Debit Card">
+            <label for="card">💳 Credit/Debit Card</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-buttons">
+        <button class="btn-checkout btn-complete" onclick="completeOrder()">Complete Order</button>
+        <button class="btn-checkout btn-back" onclick="backToMenu()">Back to Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 TOMODACHI</p>
+  </footer>
+
+  <script src="menu.js"></script>
+</body>
+</html>
